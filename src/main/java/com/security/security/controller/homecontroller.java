@@ -10,12 +10,22 @@ public class homecontroller {
 	public String home() {
 		return "Spring Security";
 	}
-	@GetMapping("/public")
-	public String user() {
-		return "this is public";
-	}
-	@GetMapping("/private")
-	public String admin() {
-		return "this is private ";
-	}
+//	@GetMapping("/public")
+//	public String user() {
+//		return "this is public";
+//	}
+//	@GetMapping("/private")
+//	public String admin() {
+//		return "this is private ";
+//	}
+	 @GetMapping("/admin")
+	    public String admin() {
+	    	return "Admin Login";
+	    }
+	    
+	    @GetMapping("/user")
+	    public String user() {
+	    	return "User Login";
+	
+}
 }

@@ -42,4 +42,9 @@ public class homecontroller {
 	public userEntity saveUser(@RequestBody userEntity u) {
 		return us.saveUser(u);
 	}
+	@PostMapping("/login")
+	public String login(@RequestBody userEntity entity) {
+		return us.verify(entity);
+	}
+	
 }

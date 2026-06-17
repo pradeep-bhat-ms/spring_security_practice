@@ -34,7 +34,7 @@ public class UserService {
 		
 		Authentication authenticate=(Authentication) manager.authenticate(new UsernamePasswordAuthenticationToken(entity.getUsername(), entity.getPassword()));
 		if (((org.springframework.security.core.Authentication) authenticate).isAuthenticated()) {
-		    return jwtService.generateToken();
+		    return jwtService.generateToken(entity.getUsername());
 		}
 
 		return "Login Failed";

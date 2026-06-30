@@ -15,12 +15,16 @@ public class UserService {
 
 	@Autowired
 	private UserRepository userRepository; 
+	
 	@Autowired
 	private PasswordEncoder encoder;
 	
 	
 	@Autowired
 	private AuthenticationManager manager;
+	
+	@Autowired
+	private jwtService jwtService;	
 
 		
 	public userEntity saveUser(userEntity u) {
@@ -28,12 +32,9 @@ public class UserService {
 		return userRepository.save(u);
 	}
 
-
-
-	public String verify(userEntity entity) {
-		
+	public String verify(userEntity entity) {		
 		Authentication authenticate=(Authentication) manager.authenticate(new UsernamePasswordAuthenticationToken(entity.getUsername(), entity.getPassword()));
-		if (((org.springframework.security.core.Authentication) authenticate).isAuthenticated()) {
+		if (authenticate.isAuthenticated()) {
 		    return jwtService.generateToken(entity.getUsername());
 		}
 

@@ -38,13 +38,19 @@ public class homecontroller {
 	@Autowired
 	private UserService us;
 	
-	@PostMapping("/save")
+	@PostMapping("/save")		
 	public userEntity saveUser(@RequestBody userEntity u) {
 		return us.saveUser(u);
 	}
 	@PostMapping("/login")
 	public String login(@RequestBody userEntity entity) {
 		return us.verify(entity);
+	}
+	
+	@GetMapping("/valid")
+	public String tokenValid()
+	{
+		return "token generated Succesfully";
 	}
 	
 }

@@ -52,7 +52,7 @@ public class security_config {
 //		http.authorizeHttpRequests(auth->
 //		auth.requestMatchers("/user").hasAnyRole("ADMIN","USER")
 //		.requestMatchers("/admin").hasRole("ADMIN")
-////		.permitAll()
+//		.permitAll()
 //		.anyRequest()
 //		.authenticated())
 //		.httpBasic(Customizer.withDefaults());
@@ -68,6 +68,8 @@ public class security_config {
 		.csrf(csrf->csrf.disable())
 		.authorizeHttpRequests(auth->auth
 				.requestMatchers("/save","/login").permitAll()
+				.requestMatchers("/student").hasAnyRole("TRAINER","STUDENT")
+				.requestMatchers("/trainer").hasAnyRole("TRAINER")
 				.anyRequest().authenticated());
 //		.httpBasic(Customizer.withDefaults());return httpSecurity.build();
 		

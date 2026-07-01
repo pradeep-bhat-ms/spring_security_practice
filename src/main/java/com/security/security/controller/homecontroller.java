@@ -47,10 +47,23 @@ public class homecontroller {
 		return us.verify(entity);
 	}
 	
+	
 	@GetMapping("/valid")
 	public String tokenValid()
 	{
 		return "token generated Succesfully";
+	}
+	
+	@GetMapping("/student")
+	public String Student()
+	{
+		return "Student can able to acces only authorized things";
+	}
+	
+	@GetMapping("/trainer")
+	public String Tranier()
+	{
+		return "Trainer cna access everythinhg";
 	}
 	
 }
